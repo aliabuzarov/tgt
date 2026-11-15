@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Yellowtail&family=Manrope:wght@400;500;600;700;800&family=Nunito:wght@900&display=swap">
+<style>body{margin:0;background:#0d0613}a{color:#f39ac0}a:hover{color:#fff}*{box-sizing:border-box}input::placeholder{color:rgba(255,255,255,.55)}select option{background:#160b20;color:#fff}</style>
+</helmet>
+<div style="container-type:inline-size;background:#0d0613;color:#fff;font-family:Manrope,system-ui,sans-serif;overflow:hidden;position:relative">
+  <dc-import name="Site Header" lang="{{ lang }}" on-lang="{{ setLang }}" active="join" hint-size="100%,77px"></dc-import>
+
+  <section style="position:relative;padding:clamp(48px,7cqw,96px) clamp(18px,4cqw,56px) clamp(56px,8cqw,112px)">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(130,40,190,.5),rgba(13,6,19,0) 55%),repeating-radial-gradient(circle at 20% 10%,rgba(255,255,255,.04) 0 1px,transparent 1px 9px);pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(32px,5cqw,72px);align-items:start">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#f7c75a;white-space:nowrap"><span style="width:36px;height:1px;background:#f7c75a"></span>{{ t.eyebrow }}</div>
+        <h1 style="margin:20px 0 0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(40px,6cqw,84px);line-height:.95;text-shadow:0 0 22px rgba(200,110,255,.5),0 0 60px rgba(150,50,230,.35)">{{ t.title }}<br><span style="font-family:Yellowtail,cursive;font-weight:400;color:#ff5fa8;text-shadow:0 0 10px rgba(255,95,168,.9),0 0 32px rgba(240,64,138,.6)">{{ t.script }}</span></h1>
+        <p style="margin:22px 0 0;max-width:480px;font-size:17px;line-height:1.65;color:rgba(255,255,255,.84)">{{ t.lead }}</p>
+
+        <div style="margin-top:36px;display:flex;flex-direction:column;gap:12px;max-width:480px">
+          <a href="https://instagram.com/banm_tgt" style="display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:20px;background:#160b20;border:1px solid rgba(214,120,255,.3);color:#fff;text-decoration:none;transition:box-shadow .3s" style-hover="box-shadow:0 0 32px rgba(240,64,138,.4)" style-focus="outline:2px solid #fff;outline-offset:3px">
+            <img src="assets/tgt-mark.png" alt="" style="height:48px">
+            <div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#ff7fb7">Instagram</div><div style="margin-top:4px;font-family:Unbounded,sans-serif;font-weight:700;font-size:20px">@banm_tgt</div></div>
+            <span aria-hidden="true" style="font-size:20px">→</span>
+          </a>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+            <a href="mailto:tgt@bhos.edu.az" style="padding:16px 18px;border-radius:18px;border:1px solid rgba(255,255,255,.15);color:#fff;text-decoration:none" style-hover="border-color:#2bb5e6" style-focus="outline:2px solid #fff;outline-offset:3px"><div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#7fd3f5">{{ t.email }}</div><div style="margin-top:6px;font-weight:700">tgt@bhos.edu.az</div></a>
+            <div style="padding:16px 18px;border-radius:18px;border:1px solid rgba(255,255,255,.15)"><div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#f7c75a">{{ t.addr }}</div><div style="margin-top:6px;font-weight:700">{{ t.addrV }}</div></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <a href="#" style="padding:11px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;font-size:14px;font-weight:700" style-hover="border-color:#fff" style-focus="outline:2px solid #fff;outline-offset:2px">Telegram</a>
+            <a href="#" style="padding:11px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:#fff;text-decoration:none;font-size:14px;font-weight:700" style-hover="border-color:#fff" style-focus="outline:2px solid #fff;outline-offset:2px">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="border-radius:28px;padding:2px;background:linear-gradient(140deg,#f0408a,#2bb5e6 50%,#f7b52a);box-shadow:0 0 50px rgba(150,50,230,.3)">
+        <div style="border-radius:26px;background:#140a1d;padding:clamp(24px,3.4cqw,40px)">
+          <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+            <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:16px">
+              <h2 style="margin:0 0 4px;font-family:Unbounded,sans-serif;font-weight:700;font-size:24px">{{ t.formTitle }}</h2>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:700">{{ t.fName }}<input name="name" required autocomplete="name" placeholder="{{ t.pName }}" style="height:52px;padding:0 16px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:#0d0613;color:#fff;font:inherit;font-size:16px;font-weight:500" style-focus="outline:2px solid #2bb5e6;outline-offset:1px"></label>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:700">{{ t.fFac }}
+                <select name="faculty" required style="height:52px;padding:0 14px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:#0d0613;color:#fff;font:inherit;font-size:16px;font-weight:500" style-focus="outline:2px solid #2bb5e6;outline-offset:1px">
+                  <option value="">{{ t.choose }}</option>
+                  <sc-for list="{{ t.facs }}" as="f"><option>{{ f }}</option></sc-for>
+                </select>
+              </label>
+              <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:7px">
+                <legend style="font-size:14px;font-weight:700;padding:0;margin-bottom:7px">{{ t.fYear }}</legend>
+                <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px">
+                  <sc-for list="{{ years }}" as="y" hint-placeholder-count="5">
+                    <button type="button" onClick="{{ y.on }}" aria-pressed="{{ y.act }}" style="min-height:48px;border-radius:12px;border:1px solid {{ y.bd }};background:{{ y.bg }};color:{{ y.fg }};font:inherit;font-size:15px;font-weight:800;cursor:pointer" style-focus="outline:2px solid #2bb5e6;outline-offset:1px">{{ y.l }}</button>
+                  </sc-for>
+                </div>
+              </fieldset>
+              <label style="display:flex;flex-direction:column;gap:7px;font-size:14px;font-weight:700">{{ t.fContact }}<input name="contact" required placeholder="+994 50 000 00 00 / ad@bhos.edu.az" style="height:52px;padding:0 16px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:#0d0613;color:#fff;font:inherit;font-size:16px;font-weight:500" style-focus="outline:2px solid #2bb5e6;outline-offset:1px"></label>
+              <button type="submit" style="margin-top:6px;min-height:56px;border:0;border-radius:999px;background:linear-gradient(90deg,#f0408a,#2bb5e6 55%,#f7b52a);color:#14081c;font:inherit;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 0 30px rgba(240,64,138,.4)" style-hover="box-shadow:0 0 44px rgba(43,181,230,.6)" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.send }}</button>
+              <p style="margin:0;font-size:13px;line-height:1.5;color:rgba(255,255,255,.7)">{{ t.note }}</p>
+            </form>
+          </sc-if>
+          <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="text-align:center;padding:40px 8px">
+              <img src="assets/tgt-mark.png" alt="" style="height:88px;filter:drop-shadow(0 0 24px rgba(214,90,255,.6))">
+              <h2 style="margin:22px 0 0;font-family:Unbounded,sans-serif;font-weight:800;font-size:28px">{{ t.thanks }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#f7c75a">{{ t.thanksS }}</span></h2>
+              <p style="margin:12px auto 0;max-width:340px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.82)">{{ t.thanksB }}</p>
+              <a href="Events.dc.html" style="margin-top:22px;display:inline-flex;align-items:center;min-height:52px;padding:0 28px;border-radius:999px;background:#fff;color:#1a0b24;font-weight:800;text-decoration:none" style-focus="outline:2px solid #f0408a;outline-offset:3px">{{ t.seeEvents }}</a>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" lang="{{ lang }}" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;}}">
+const T = {
+  az: { eyebrow: 'Üzvlük və əlaqə', title: 'Üzv ol,', script: 'bizimlə qur', lead: 'Kursundan və fakültəndən asılı olmayaraq müraciət edə bilərsən. Formu doldur, komandamız səninlə əlaqə saxlayacaq.',
+    email: 'E-poçt', addr: 'Ünvan', addrV: 'BANM, Xocalı pr. 30, Bakı', formTitle: 'Müraciət forması', fName: 'Ad, soyad', pName: 'Adınız və soyadınız', fFac: 'Fakültə / ixtisas', choose: 'Seçin', fYear: 'Kurs', fContact: 'Telefon və ya e-poçt', send: 'Üzv ol', note: 'Məlumatların yalnız üzvlük üçün istifadə olunur.',
+    facs: ['Neft-qaz mühəndisliyi', 'Kimya mühəndisliyi', 'Proseslərin avtomatlaşdırılması', 'Kompüter mühəndisliyi', 'İnformasiya təhlükəsizliyi', 'Biznes idarəçiliyi'], master: 'Mag',
+    thanks: 'Təşəkkürlər,', thanksS: 'görüşənədək!', thanksB: 'Müraciətin qəbul olundu. Bir neçə gün ərzində səninlə əlaqə saxlayacağıq.', seeEvents: 'Tədbirlərə bax' },
+  en: { eyebrow: 'Membership & contact', title: 'Join us,', script: 'build with us', lead: 'Students of any year and faculty can apply. Fill in the form and our team will get in touch.',
+    email: 'Email', addr: 'Address', addrV: 'BHOS, 30 Khojaly Ave, Baku', formTitle: 'Application form', fName: 'Full name', pName: 'Your first and last name', fFac: 'Faculty / programme', choose: 'Select', fYear: 'Year', fContact: 'Phone or email', send: 'Join us', note: 'Your details are used only for membership.',
+    facs: ['Petroleum Engineering', 'Chemical Engineering', 'Process Automation Engineering', 'Computer Engineering', 'Information Security', 'Business Administration'], master: 'MSc',
+    thanks: 'Thank you,', thanksS: 'see you soon!', thanksB: 'Your application was received. We’ll contact you within a few days.', seeEvents: 'See events' }
+};
+const getLang = () => { try { return localStorage.getItem('tgt-lang'); } catch (e) { return null; } };
+class Component extends DCLogic {
+  state = { lang: getLang(), year: null, sent: false };
+  setLang = l => { try { localStorage.setItem('tgt-lang', l); } catch (e) {} this.setState({ lang: l }); };
+  renderVals() {
+    const lang = this.state.lang || this.props.lang || 'az', t = T[lang];
+    return { t, lang, setLang: this.setLang, sent: this.state.sent, notSent: !this.state.sent,
+      years: ['1', '2', '3', '4', t.master].map((l, i) => { const a = this.state.year === i; return { l, act: a, on: () => this.setState({ year: i }), bg: a ? '#fff' : 'transparent', fg: a ? '#1a0b24' : '#fff', bd: a ? '#fff' : 'rgba(255,255,255,.25)' }; }),
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); } };
+  }
+}
+</script>
+</body>
+</html>

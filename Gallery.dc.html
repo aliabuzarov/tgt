@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Yellowtail&family=Manrope:wght@400;500;600;700;800&family=Nunito:wght@900&display=swap">
+<style>body{margin:0;background:#0d0613}a{color:#f39ac0}a:hover{color:#fff}*{box-sizing:border-box}</style>
+</helmet>
+<div style="container-type:inline-size;background:#0d0613;color:#fff;font-family:Manrope,system-ui,sans-serif;overflow:hidden;position:relative">
+  <dc-import name="Site Header" lang="{{ lang }}" on-lang="{{ setLang }}" active="gallery" hint-size="100%,77px"></dc-import>
+
+  <section style="position:relative;text-align:center;padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) clamp(32px,4cqw,56px)">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(130,40,190,.5),rgba(13,6,19,0) 60%),repeating-radial-gradient(circle at 50% 0%,rgba(255,255,255,.04) 0 1px,transparent 1px 9px);pointer-events:none"></div>
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#f7c75a;white-space:nowrap"><span style="width:36px;height:1px;background:#f7c75a"></span>{{ t.eyebrow }}<span style="width:36px;height:1px;background:#f7c75a"></span></div>
+      <h1 style="margin:22px 0 0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(36px,6.4cqw,92px);line-height:1;text-shadow:0 0 22px rgba(200,110,255,.5),0 0 60px rgba(150,50,230,.35)">{{ t.title }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#ff5fa8;text-shadow:0 0 10px rgba(255,95,168,.9),0 0 32px rgba(240,64,138,.6)">{{ t.script }}</span></h1>
+    </div>
+  </section>
+
+  <section style="padding:0 clamp(18px,4cqw,56px);max-width:1240px;margin:0 auto">
+    <div role="group" aria-label="{{ t.filter }}" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+      <sc-for list="{{ chips }}" as="f" hint-placeholder-count="4">
+        <button onClick="{{ f.on }}" aria-pressed="{{ f.act }}" style="min-height:44px;padding:0 18px;border-radius:999px;border:1px solid {{ f.bd }};background:{{ f.bg }};color:{{ f.fg }};font:inherit;font-size:14px;font-weight:700;cursor:pointer" style-hover="border-color:#fff" style-focus="outline:2px solid #fff;outline-offset:2px">{{ f.label }}</button>
+      </sc-for>
+    </div>
+    <div style="margin-top:28px;columns:3 240px;column-gap:14px">
+      <sc-for list="{{ photos }}" as="p" hint-placeholder-count="8">
+        <button onClick="{{ p.open }}" aria-label="{{ p.label }}" style="display:block;width:100%;margin:0 0 14px;padding:0;border:0;border-radius:18px;overflow:hidden;position:relative;cursor:zoom-in;break-inside:avoid;background:#160b20;transition:box-shadow .3s" style-hover="box-shadow:0 0 30px rgba(170,70,240,.45)" style-focus="outline:2px solid #fff;outline-offset:3px">
+          <sc-if value="{{ p.hasImg }}"><img src="{{ p.img }}" alt="" loading="lazy" style="display:block;width:100%;aspect-ratio:{{ p.ar }};object-fit:cover;object-position:top"></sc-if>
+          <sc-if value="{{ p.noImg }}"><div style="width:100%;aspect-ratio:{{ p.ar }};background:repeating-linear-gradient(135deg,#1d1028 0 10px,#22132f 10px 20px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:12px;color:rgba(255,255,255,.6)">event photo</div></sc-if>
+          <span style="position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:999px;background:rgba(13,6,19,.85);color:#fff;font-size:12px;font-weight:700">{{ p.label }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="news" style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px);max-width:1240px;margin:0 auto">
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(28px,3.6cqw,48px)">{{ t.news }}</h2>
+      <a href="https://instagram.com/banm_tgt" style="font-weight:700;color:#fff;text-decoration:none;border-bottom:2px solid #2bb5e6;padding-bottom:3px" style-focus="outline:2px solid #fff;outline-offset:3px">@banm_tgt</a>
+    </div>
+    <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+      <sc-for list="{{ news }}" as="n" hint-placeholder-count="3">
+        <article style="border-radius:22px;overflow:hidden;background:#160b20;border:1px solid rgba(214,120,255,.2);display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s" style-hover="box-shadow:0 0 36px rgba(170,70,240,.35);transform:translateY(-4px)">
+          <div style="aspect-ratio:16/10;overflow:hidden">
+            <sc-if value="{{ n.hasImg }}"><img src="{{ n.img }}" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></sc-if>
+            <sc-if value="{{ n.noImg }}"><div style="width:100%;height:100%;background:repeating-linear-gradient(135deg,#1d1028 0 10px,#22132f 10px 20px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:12px;color:rgba(255,255,255,.6)">news image</div></sc-if>
+          </div>
+          <div style="padding:20px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1">
+            <div style="display:flex;align-items:stretch;gap:10px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase"><span style="color:#ff7fb7">{{ n.tag }}</span><span style="width:1px;background:rgba(255,255,255,.3)"></span><span style="color:rgba(255,255,255,.72)">{{ n.date }}</span></div>
+            <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:19px;line-height:1.25;text-wrap:balance">{{ n.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.78)">{{ n.excerpt }}</p>
+            <a href="#" style="margin-top:auto;padding-top:8px;font-weight:700;color:#fff;text-decoration:none" style-hover="color:#7fd3f5" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.read }} →</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" lang="{{ lang }}" hint-size="100%,260px"></dc-import>
+
+  <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="{{ lb.label }}" onClick="{{ close }}" style="position:fixed;inset:0;z-index:50;background:rgba(8,3,12,.92);display:flex;align-items:center;justify-content:center;padding:24px">
+      <div style="position:relative;max-width:min(900px,100%);max-height:100%;width:100%;display:flex;flex-direction:column;align-items:center;gap:14px">
+        <sc-if value="{{ lb.hasImg }}"><img src="{{ lb.img }}" alt="" style="max-width:100%;max-height:80vh;border-radius:16px;box-shadow:0 0 60px rgba(170,70,240,.4)"></sc-if>
+        <sc-if value="{{ lb.noImg }}"><div style="width:100%;aspect-ratio:3/2;border-radius:16px;background:repeating-linear-gradient(135deg,#1d1028 0 10px,#22132f 10px 20px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:13px;color:rgba(255,255,255,.6)">event photo</div></sc-if>
+        <div style="font-weight:700">{{ lb.label }}</div>
+        <button onClick="{{ close }}" aria-label="Close" style="position:absolute;top:-8px;right:-8px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:#1a0b24;font-size:22px;font-weight:700;cursor:pointer" style-focus="outline:2px solid #f0408a;outline-offset:2px">×</button>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;}}">
+const T = {
+  az: { eyebrow: 'Qalereya və xəbərlər', title: 'Ən yaxşı', script: 'anlar', filter: 'Tədbirə görə süz', all: 'Hamısı', news: 'Xəbərlər', read: 'Oxu' },
+  en: { eyebrow: 'Gallery & news', title: 'Best', script: 'moments', filter: 'Filter by event', all: 'All', news: 'News', read: 'Read' }
+};
+const getLang = () => { try { return localStorage.getItem('tgt-lang'); } catch (e) { return null; } };
+class Component extends DCLogic {
+  state = { lang: getLang(), c: null, f: 'all', lb: null };
+  setLang = l => { try { localStorage.setItem('tgt-lang', l); } catch (e) {} this.setState({ lang: l }); };
+  componentDidMount() {
+    import(new URL('content.js', document.baseURI).href).then(c => this.setState({ c }));
+    this.onKey = e => { if (e.key === 'Escape') this.setState({ lb: null }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this.onKey); }
+  renderVals() {
+    const lang = this.state.lang || this.props.lang || 'az', t = T[lang], c = this.state.c, f = this.state.f;
+    const name = id => { const e = c.events.find(x => x.id === id); return e ? `${e.sub[lang]} · ${e.date.slice(0, 4)}` : id; };
+    const ids = c ? [...new Set(c.gallery.map(g => g.event))] : [];
+    const chip = (k, label) => { const a = f === k; return { label, act: a, on: () => this.setState({ f: k }), bg: a ? '#fff' : 'transparent', fg: a ? '#1a0b24' : '#fff', bd: a ? '#fff' : 'rgba(255,255,255,.25)' }; };
+    const photos = c ? c.gallery.map((g, i) => ({ ...g, i })).filter(g => f === 'all' || g.event === f).map(g => ({ img: g.img, hasImg: !!g.img, noImg: !g.img, ar: g.tall ? '3/4' : '4/3', label: name(g.event), open: () => this.setState({ lb: g.i }) })) : [];
+    const lbG = c && this.state.lb != null ? c.gallery[this.state.lb] : null;
+    return { t, lang, setLang: this.setLang,
+      chips: c ? [chip('all', t.all), ...ids.map(id => chip(id, name(id)))] : [],
+      photos,
+      news: c ? c.news.map(n => ({ img: n.img, hasImg: !!n.img, noImg: !n.img, date: c.fmt(n.date, lang).full, tag: n.tag[lang], title: n.title[lang], excerpt: n.excerpt[lang] })) : [],
+      lbOpen: !!lbG, lb: lbG ? { img: lbG.img, hasImg: !!lbG.img, noImg: !lbG.img, label: name(lbG.event) } : {}, close: () => this.setState({ lb: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

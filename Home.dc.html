@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Yellowtail&family=Manrope:wght@400;500;600;700;800&family=Nunito:wght@900&display=swap">
+<style>body{margin:0;background:#0d0613}a{color:#f39ac0}a:hover{color:#fff}*{box-sizing:border-box}</style>
+</helmet>
+<div ref="{{ root }}" style="container-type:inline-size;background:#0d0613;color:#fff;font-family:Manrope,system-ui,sans-serif;overflow:hidden;position:relative">
+  <dc-import name="Site Header" lang="{{ lang }}" on-lang="{{ setLang }}" active="home" hint-size="100%,77px"></dc-import>
+
+  <section aria-labelledby="heroA" style="position:relative;text-align:center;padding:clamp(48px,7cqw,96px) clamp(18px,4cqw,56px) clamp(56px,7cqw,104px)">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 46%,rgba(130,40,190,.55),rgba(13,6,19,0) 60%),repeating-radial-gradient(circle at 50% 46%,rgba(255,255,255,.045) 0 1px,transparent 1px 9px);pointer-events:none"></div>
+    <div aria-hidden="true" style="position:absolute;left:-10%;right:-10%;top:58%;height:2px;background:linear-gradient(90deg,transparent,#f7b52a 25%,#f0408a 55%,#a24de0 80%,transparent);transform:rotate(-7deg);filter:drop-shadow(0 0 8px #f0408a);opacity:.8"></div>
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#f7c75a;white-space:nowrap">
+        <span style="width:36px;height:1px;background:#f7c75a"></span>{{ t.eyebrow }}<span style="width:36px;height:1px;background:#f7c75a"></span>
+      </div>
+      <h1 id="heroA" style="margin:22px 0 0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(46px,10.5cqw,148px);line-height:.92;letter-spacing:-.01em;text-shadow:0 0 22px rgba(200,110,255,.55),0 0 60px rgba(150,50,230,.4)">BHOS<br>FAMILY</h1>
+      <div style="font-family:Yellowtail,cursive;font-size:clamp(58px,10cqw,140px);line-height:1;color:#ff5fa8;margin-top:clamp(-56px,-4.4cqw,-22px);transform:rotate(-6deg);text-shadow:0 0 10px rgba(255,95,168,.9),0 0 32px rgba(240,64,138,.6)">Party</div>
+      <div style="margin-top:clamp(18px,3cqw,34px);font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(20px,3cqw,38px);letter-spacing:.06em;text-transform:uppercase"><span style="color:#f7c75a">15</span>{{ t.anniv }}</div>
+      <div style="margin-top:20px;display:flex;align-items:stretch;justify-content:center;font-size:clamp(13px,1.4cqw,17px);font-weight:700;letter-spacing:.12em;text-transform:uppercase">
+        <span style="padding:2px clamp(12px,2cqw,26px)">{{ t.date }}</span>
+        <span style="width:1px;background:#f0408a;box-shadow:0 0 8px #f0408a"></span>
+        <span style="padding:2px clamp(12px,2cqw,26px)">{{ t.music }}</span>
+        <span style="width:1px;background:#f0408a;box-shadow:0 0 8px #f0408a"></span>
+        <span style="padding:2px clamp(12px,2cqw,26px)">18:00</span>
+      </div>
+      <div style="margin-top:14px;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.28em;color:rgba(255,255,255,.85)">
+        <span style="width:6px;height:6px;background:#2bb5e6;transform:rotate(45deg)"></span>KHAN BY HOLLYWOOD<span style="width:6px;height:6px;background:#2bb5e6;transform:rotate(45deg)"></span>
+      </div>
+      <div role="timer" aria-label="{{ t.countLabel }}" style="margin-top:clamp(28px,4cqw,44px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1.2cqw,14px);width:min(100%,520px)">
+        <sc-for list="{{ cd }}" as="c" hint-placeholder-count="4">
+          <div style="padding:14px 4px 12px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(214,120,255,.28);box-shadow:inset 0 0 24px rgba(160,60,230,.15),0 0 22px rgba(160,60,230,.18)">
+            <div style="font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(26px,3.6cqw,42px);font-variant-numeric:tabular-nums">{{ c.v }}</div>
+            <div style="margin-top:4px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.72)">{{ c.l }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="margin-top:30px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px">
+        <a href="Events.dc.html" style="display:inline-flex;align-items:center;min-height:52px;padding:0 30px;border-radius:999px;background:linear-gradient(90deg,#f0408a,#2bb5e6 55%,#f7b52a);color:#14081c;font-weight:800;text-decoration:none;box-shadow:0 0 30px rgba(240,64,138,.45)" style-hover="box-shadow:0 0 44px rgba(43,181,230,.6)" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.learn }}</a>
+        <a href="Join.dc.html" style="display:inline-flex;align-items:center;min-height:52px;padding:0 30px;border-radius:999px;border:1px solid rgba(255,255,255,.45);color:#fff;font-weight:700;text-decoration:none" style-hover="border-color:#fff;background:rgba(255,255,255,.06)" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.join }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(20px,4cqw,64px);align-items:end">
+    <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(28px,3.6cqw,48px);line-height:1.08;text-wrap:balance">{{ t.introTitle }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#2bb5e6;text-shadow:0 0 18px rgba(43,181,230,.6)">{{ t.introScript }}</span></h2>
+    <div>
+      <p style="margin:0;font-size:17px;line-height:1.65;color:rgba(255,255,255,.82);text-wrap:pretty">{{ t.introBody }}</p>
+      <a href="About.dc.html" style="display:inline-block;margin-top:18px;font-weight:700;color:#fff;text-decoration:none;border-bottom:2px solid #f0408a;padding-bottom:3px" style-hover="border-color:#2bb5e6" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.aboutLink }}</a>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(40px,5cqw,64px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12)">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="padding:clamp(20px,3cqw,36px) clamp(8px,2cqw,28px);border-left:{{ s.border }};text-align:center">
+          <div style="font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(24px,5cqw,64px);text-shadow:0 0 24px rgba(190,90,255,.5)">{{ s.n }}</div>
+          <div style="margin-top:6px;font-size:clamp(11px,1.2cqw,14px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72)">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto">
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap">
+      <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(26px,3.2cqw,42px)">{{ t.upcoming }}</h2>
+      <a href="Events.dc.html" style="font-weight:700;color:#fff;text-decoration:none;border-bottom:2px solid #2bb5e6;padding-bottom:3px" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.allEvents }}</a>
+    </div>
+    <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+        <article style="border-radius:22px;overflow:hidden;background:#160b20;border:1px solid rgba(214,120,255,.2);transition:box-shadow .3s,transform .3s" style-hover="box-shadow:0 0 36px rgba(170,70,240,.35);transform:translateY(-4px)">
+          <div style="position:relative;aspect-ratio:4/3;overflow:hidden">
+            <sc-if value="{{ e.hasImg }}"><img src="{{ e.img }}" alt="{{ e.title }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"></sc-if>
+            <sc-if value="{{ e.noImg }}"><div style="width:100%;height:100%;background:repeating-linear-gradient(135deg,#1d1028 0 10px,#22132f 10px 20px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:12px;color:rgba(255,255,255,.6)">event photo</div></sc-if>
+            <div style="position:absolute;top:14px;left:14px;background:rgba(13,6,19,.85);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:8px 12px;text-align:center;line-height:1">
+              <div style="font-family:Unbounded,sans-serif;font-weight:800;font-size:24px">{{ e.day }}</div>
+              <div style="margin-top:4px;font-size:11px;font-weight:800;letter-spacing:.14em;color:#f7c75a">{{ e.mon }}</div>
+            </div>
+          </div>
+          <div style="padding:20px 22px 24px">
+            <div style="font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#ff7fb7">{{ e.tag }}</div>
+            <h3 style="margin:8px 0 0;font-family:Unbounded,sans-serif;font-weight:700;font-size:20px;line-height:1.2">{{ e.title }}</h3>
+            <div style="margin-top:4px;font-size:15px;color:rgba(255,255,255,.75)">{{ e.sub }}</div>
+            <div style="margin-top:16px;display:flex;align-items:stretch;gap:12px;font-size:13px;font-weight:700;color:rgba(255,255,255,.9)">
+              <span>{{ e.place }}</span><span style="width:1px;background:#f0408a"></span><span>{{ e.time }}</span>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px);max-width:1240px;margin:0 auto">
+    <div style="position:relative;border-radius:28px;padding:2px;background:linear-gradient(110deg,#f0408a,#2bb5e6 50%,#f7b52a)">
+      <div style="border-radius:26px;background:radial-gradient(circle at 85% 20%,rgba(150,50,230,.45),transparent 55%),#140a1d;padding:clamp(32px,5cqw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:28px">
+        <div style="max-width:620px">
+          <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(30px,4.4cqw,58px);line-height:1;text-shadow:0 0 26px rgba(190,90,255,.5)">{{ t.joinTitle }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#f7c75a;text-shadow:0 0 16px rgba(247,181,42,.6)">{{ t.joinScript }}</span></h2>
+          <p style="margin:16px 0 0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.82)">{{ t.joinBody }}</p>
+        </div>
+        <a href="Join.dc.html" style="display:inline-flex;align-items:center;min-height:56px;padding:0 34px;border-radius:999px;background:#fff;color:#1a0b24;font-weight:800;font-size:16px;text-decoration:none;box-shadow:0 0 30px rgba(214,90,255,.5)" style-hover="box-shadow:0 0 44px rgba(240,64,138,.75)" style-focus="outline:2px solid #f0408a;outline-offset:3px">{{ t.join }}</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" lang="{{ lang }}" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const T = {
+  az: { join: 'Üzv ol', learn: 'Ətraflı', eyebrow: 'Növbəti tədbir', anniv: '-ci il dönümü', date: '24 Noyabr', music: 'Canlı musiqi', countLabel: 'Tədbirə qalan vaxt', units: ['Gün','Saat','Dəq','San'],
+    introTitle: 'Biz BANM-ın tələbə', introScript: 'səsiyik', introBody: 'Tələbə Gənclər Təşkilatı Bakı Ali Neft Məktəbində tələbə təşəbbüslərini birləşdirir: tədbirlər, könüllülük layihələri, intellektual yarışlar və tələbə həyatını rəngarəng edən hər şey.', aboutLink: 'Haqqımızda daha çox',
+    upcoming: 'Qarşıdakı tədbirlər', allEvents: 'Bütün tədbirlər', joinTitle: 'Komandaya', joinScript: 'qoşul', joinBody: 'İdeyaların var? Tədbir təşkil etmək istəyirsən? Müraciət et, növbəti tədbiri birlikdə quraq.' },
+  en: { join: 'Join us', learn: 'Learn more', eyebrow: 'Next event', anniv: 'th Anniversary', date: '24 November', music: 'Live music', countLabel: 'Time until the event', units: ['Days','Hrs','Min','Sec'],
+    introTitle: 'We are the student voice of', introScript: 'BHOS', introBody: 'The Student Youth Organization brings student initiatives at Baku Higher Oil School together: events, volunteering projects, intellectual competitions and everything that makes student life vivid.', aboutLink: 'More about us',
+    upcoming: 'Upcoming events', allEvents: 'All events', joinTitle: 'Join the', joinScript: 'team', joinBody: 'Have ideas? Want to organise events? Apply and let’s build the next one together.' }
+};
+const TARGET = Date.parse('2026-11-24T18:00:00+04:00');
+const getLang = () => { try { return localStorage.getItem('tgt-lang'); } catch (e) { return null; } };
+class Component extends DCLogic {
+  state = { lang: getLang(), c: null, now: Date.now() };
+  root = React.createRef();
+  setLang = l => { try { localStorage.setItem('tgt-lang', l); } catch (e) {} this.setState({ lang: l }); };
+  componentDidMount() {
+    import(new URL('content.js', document.baseURI).href).then(c => this.setState({ c }));
+    this.iv = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    const el = this.root.current; if (!el || this.props.reveal === false) return;
+    this.io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.style.opacity = 1; x.target.style.transform = 'none'; this.io.unobserve(x.target); } }), { threshold: 0.1 });
+    el.querySelectorAll('[data-reveal]').forEach(n => { n.style.transition = 'opacity .8s ease, transform .8s ease'; n.style.opacity = 0; n.style.transform = 'translateY(28px)'; this.io.observe(n); });
+  }
+  componentWillUnmount() { clearInterval(this.iv); this.io && this.io.disconnect(); }
+  renderVals() {
+    const lang = this.state.lang || this.props.lang || 'az', t = T[lang], c = this.state.c;
+    const s = Math.max(0, Math.floor((TARGET - this.state.now) / 1000));
+    const v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60].map(n => String(n).padStart(2, '0'));
+    return {
+      root: this.root, t, lang, setLang: this.setLang,
+      cd: v.map((x, i) => ({ v: x, l: t.units[i] })),
+      stats: c ? c.stats.map((x, i) => ({ n: x.n, l: x.l[lang], border: i ? '1px solid rgba(255,255,255,.12)' : '0' })) : [],
+      events: c ? c.events.filter(e => e.status === 'upcoming').slice(0, 3).map(e => c.ev(e, lang)) : []
+    };
+  }
+}
+</script>
+</body>
+</html>

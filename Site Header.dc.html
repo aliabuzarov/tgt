@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div ref="{{ root }}" style="position:relative;z-index:20">
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px clamp(18px,4cqw,56px);border-bottom:1px solid rgba(255,255,255,.08);font-family:Manrope,system-ui,sans-serif">
+    <a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;flex-shrink:0" style-focus="outline:2px solid #fff;outline-offset:4px;border-radius:6px">
+      <img src="assets/tgt-mark.png" alt="" style="height:40px;width:auto;display:block">
+      <span style="font-family:Nunito,sans-serif;font-weight:900;font-size:20px;letter-spacing:.02em;white-space:nowrap">BANM TGT</span>
+    </a>
+    <sc-if value="{{ d }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:clamp(14px,1.8cqw,26px);font-size:14px;white-space:nowrap;font-weight:600">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="{{ n.href }}" aria-current="{{ n.cur }}" style="color:{{ n.color }};text-decoration:none;padding:6px 0;border-bottom:2px solid {{ n.line }}" style-hover="color:#fff" style-focus="outline:2px solid #fff;outline-offset:3px">{{ n.label }}</a></sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:12px">
+      <div role="group" aria-label="Language" style="display:flex;border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px;font-size:12px;font-weight:700">
+        <button onClick="{{ setAz }}" aria-pressed="{{ isAz }}" style="border:0;cursor:pointer;border-radius:999px;padding:6px 10px;font:inherit;background:{{ azBg }};color:{{ azFg }}" style-focus="outline:2px solid #fff;outline-offset:2px">AZ</button>
+        <button onClick="{{ setEn }}" aria-pressed="{{ isEn }}" style="border:0;cursor:pointer;border-radius:999px;padding:6px 10px;font:inherit;background:{{ enBg }};color:{{ enFg }}" style-focus="outline:2px solid #fff;outline-offset:2px">EN</button>
+      </div>
+      <sc-if value="{{ d }}" hint-placeholder-val="{{ true }}">
+        <a href="Join.dc.html" style="background:#fff;color:#1a0b24;text-decoration:none;font-weight:700;font-size:14px;padding:11px 20px;border-radius:999px;box-shadow:0 0 24px rgba(214,90,255,.45)" style-hover="box-shadow:0 0 34px rgba(240,64,138,.7)" style-focus="outline:2px solid #f0408a;outline-offset:3px">{{ joinLabel }}</a>
+      </sc-if>
+      <sc-if value="{{ m }}" hint-placeholder-val="{{ false }}">
+        <button aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}" style="width:44px;height:44px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:transparent;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer" style-focus="outline:2px solid #fff;outline-offset:2px">
+          <span style="width:18px;height:2px;background:#fff;border-radius:2px"></span><span style="width:18px;height:2px;background:#fff;border-radius:2px"></span><span style="width:12px;height:2px;background:#f0408a;border-radius:2px;margin-left:6px"></span>
+        </button>
+      </sc-if>
+    </div>
+  </header>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:8px 18px 22px;border-bottom:1px solid rgba(255,255,255,.08);background:#140a1d;font-family:Manrope,sans-serif">
+      <sc-for list="{{ nav }}" as="n"><a href="{{ n.href }}" style="color:#fff;text-decoration:none;font-family:Unbounded,sans-serif;font-weight:700;font-size:20px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)">{{ n.label }}</a></sc-for>
+      <a href="Join.dc.html" style="margin-top:18px;text-align:center;background:linear-gradient(90deg,#f0408a,#2bb5e6 55%,#f7b52a);color:#14081c;font-weight:800;padding:15px;border-radius:999px;text-decoration:none">{{ joinLabel }}</a>
+    </nav>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;about&quot;,&quot;events&quot;,&quot;team&quot;,&quot;gallery&quot;,&quot;news&quot;,&quot;join&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onLang&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;(l:string)=&gt;void&quot;}}">
+const NAV = [
+  { k: 'about', href: 'About.dc.html', az: 'Haqqımızda', en: 'About' },
+  { k: 'events', href: 'Events.dc.html', az: 'Tədbirlər', en: 'Events' },
+  { k: 'team', href: 'Team.dc.html', az: 'Komanda', en: 'Team' },
+  { k: 'gallery', href: 'Gallery.dc.html', az: 'Qalereya', en: 'Gallery' },
+  { k: 'news', href: 'Gallery.dc.html#news', az: 'Xəbərlər', en: 'News' },
+  { k: 'join', href: 'Join.dc.html', az: 'Əlaqə', en: 'Contact' }
+];
+class Component extends DCLogic {
+  state = { m: false, menu: false };
+  root = el => { if (!el || this.ro) return; const chk = w => { const m = w < 1040; if (m !== this.state.m) this.setState({ m }); }; chk(el.getBoundingClientRect().width); this.ro = new ResizeObserver(([e]) => chk(e.contentRect.width)); this.ro.observe(el); this.rootEl = el; };
+  componentDidMount() {
+    const el = this.rootEl; if (!el) return;
+  }
+  componentWillUnmount() { this.ro && this.ro.disconnect(); }
+  renderVals() {
+    const lang = this.props.lang || 'az', az = lang === 'az', act = this.props.active;
+    const set = l => () => this.props.onLang && this.props.onLang(l);
+    return {
+      root: this.root, isAz: az, isEn: !az,
+      azBg: az ? '#fff' : 'transparent', azFg: az ? '#1a0b24' : '#fff', enBg: az ? 'transparent' : '#fff', enFg: az ? '#fff' : '#1a0b24',
+      setAz: set('az'), setEn: set('en'), joinLabel: az ? 'Üzv ol' : 'Join us',
+      nav: NAV.map(n => ({ href: n.href, label: n[lang], cur: n.k === act ? 'page' : undefined, color: n.k === act ? '#fff' : 'rgba(255,255,255,.8)', line: n.k === act ? '#f0408a' : 'transparent' })),
+      m: this.state.m, d: !this.state.m, menuOpen: this.state.m && this.state.menu, toggleMenu: () => this.setState(p => ({ menu: !p.menu }))
+    };
+  }
+}
+</script>
+</body>
+</html>

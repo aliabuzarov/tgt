@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Sacramento&family=Instrument+Sans:wght@400;500;600;700&family=Nunito:wght@900&display=swap">
+<style>body{margin:0;background:#100818}a{color:#7fd3f5}a:hover{color:#fff}*{box-sizing:border-box}</style>
+</helmet>
+<div ref="{{ root }}" style="container-type:inline-size;background:#100818;color:#fff;font-family:'Instrument Sans',system-ui,sans-serif;overflow:hidden">
+
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px clamp(18px,4cqw,64px)">
+    <a href="#" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;flex-shrink:0" style-focus="outline:2px solid #fff;outline-offset:4px;border-radius:6px">
+      <img src="assets/tgt-mark.png" alt="" style="height:38px;display:block">
+      <span style="font-family:Nunito,sans-serif;font-weight:900;font-size:19px;letter-spacing:.02em;white-space:nowrap">BANM TGT</span>
+    </a>
+    <sc-if value="{{ d }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:30px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em">
+        <sc-for list="{{ t.nav }}" as="n" hint-placeholder-count="6"><a href="#" style="color:rgba(255,255,255,.78);text-decoration:none" style-hover="color:#fff">{{ n }}</a></sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex;align-items:center;gap:14px">
+      <div role="group" aria-label="Language" style="display:flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em">
+        <button onClick="{{ setAz }}" aria-pressed="{{ isAz }}" style="border:0;background:none;cursor:pointer;font:inherit;padding:6px 2px;color:#fff;opacity:{{ azOp }};border-bottom:2px solid {{ azLine }}" style-focus="outline:2px solid #fff;outline-offset:2px">AZ</button>
+        <span style="width:1px;height:14px;background:rgba(255,255,255,.35)"></span>
+        <button onClick="{{ setEn }}" aria-pressed="{{ isEn }}" style="border:0;background:none;cursor:pointer;font:inherit;padding:6px 2px;color:#fff;opacity:{{ enOp }};border-bottom:2px solid {{ enLine }}" style-focus="outline:2px solid #fff;outline-offset:2px">EN</button>
+      </div>
+      <sc-if value="{{ d }}" hint-placeholder-val="{{ true }}">
+        <a href="#joinB" style="background:#8a3bc4;color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 22px;border-radius:4px" style-hover="background:#9d4fd6" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.join }} →</a>
+      </sc-if>
+      <sc-if value="{{ m }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMenu }}" aria-label="Menu" style="height:44px;padding:0 14px;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:none;color:#fff;font:inherit;font-size:13px;font-weight:700;letter-spacing:.1em;cursor:pointer" style-focus="outline:2px solid #fff;outline-offset:2px">{{ t.menu }}</button>
+      </sc-if>
+    </div>
+  </header>
+  <div style="height:1px;margin:0 clamp(18px,4cqw,64px);background:linear-gradient(90deg,#f0408a,#2bb5e6,#f7b52a)"></div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <nav style="display:flex;flex-direction:column;padding:6px 18px 20px">
+      <sc-for list="{{ t.nav }}" as="n"><a href="#" style="color:#fff;text-decoration:none;font-family:Archivo,sans-serif;font-stretch:125%;font-weight:800;font-size:22px;text-transform:uppercase;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)">{{ n }}</a></sc-for>
+      <a href="#joinB" style="margin-top:18px;text-align:center;background:#8a3bc4;color:#fff;font-weight:700;padding:15px;border-radius:4px;text-decoration:none">{{ t.join }} →</a>
+    </nav>
+  </sc-if>
+
+  <section aria-labelledby="heroB" style="position:relative;padding:clamp(36px,5cqw,72px) clamp(18px,4cqw,64px) clamp(48px,6cqw,88px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:clamp(36px,5cqw,72px);align-items:center">
+    <div aria-hidden="true" style="position:absolute;right:-10%;top:-10%;width:60%;aspect-ratio:1;background:radial-gradient(circle,rgba(138,59,196,.4),transparent 65%);pointer-events:none"></div>
+    <div style="position:relative">
+      <div style="display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase">
+        <span style="color:#7fd3f5">{{ t.eyebrow }}</span><span style="width:28px;height:1px;background:rgba(255,255,255,.4)"></span><span style="color:rgba(255,255,255,.75)">{{ t.anniv15 }}</span>
+      </div>
+      <h1 id="heroB" style="margin:20px 0 0;font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(56px,9.2cqw,136px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase;text-shadow:0 0 40px rgba(170,80,240,.45)">BHOS<br>Family</h1>
+      <div style="font-family:Sacramento,cursive;font-size:clamp(64px,8.4cqw,124px);line-height:.8;color:#ff6fae;margin:clamp(-18px,-1cqw,-8px) 0 0 clamp(80px,14cqw,220px);text-shadow:0 0 14px rgba(255,95,168,.85),0 0 36px rgba(240,64,138,.5)">Party</div>
+      <div style="margin-top:clamp(24px,3cqw,40px);display:grid;grid-template-columns:repeat(3,auto);justify-content:start;border-top:1px solid rgba(255,255,255,.18);border-bottom:1px solid rgba(255,255,255,.18)">
+        <div style="padding:14px clamp(14px,2cqw,28px) 14px 0"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65)">{{ t.lDate }}</div><div style="margin-top:4px;font-weight:700;font-size:clamp(15px,1.5cqw,18px)">{{ t.date }}</div></div>
+        <div style="padding:14px clamp(14px,2cqw,28px);border-left:1px solid #f0408a"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65)">{{ t.lTime }}</div><div style="margin-top:4px;font-weight:700;font-size:clamp(15px,1.5cqw,18px)">18:00</div></div>
+        <div style="padding:14px clamp(14px,2cqw,28px);border-left:1px solid #f0408a"><div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65)">{{ t.lPlace }}</div><div style="margin-top:4px;font-weight:700;font-size:clamp(15px,1.5cqw,18px)">Khan by Hollywood</div></div>
+      </div>
+      <div role="timer" aria-label="{{ t.countLabel }}" style="margin-top:24px;display:flex;align-items:flex-end;gap:clamp(14px,2.4cqw,30px)">
+        <sc-for list="{{ cd }}" as="c" hint-placeholder-count="4">
+          <div><div style="font-family:Archivo,sans-serif;font-stretch:110%;font-weight:800;font-size:clamp(34px,4cqw,54px);line-height:1;font-variant-numeric:tabular-nums">{{ c.v }}</div><div style="margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#f7c75a">{{ c.l }}</div></div>
+        </sc-for>
+      </div>
+      <div style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px">
+        <a href="#" style="display:inline-flex;align-items:center;min-height:52px;padding:0 28px;border-radius:4px;background:#fff;color:#1a0b24;font-weight:700;text-decoration:none;box-shadow:0 0 0 0 transparent" style-hover="box-shadow:0 0 30px rgba(43,181,230,.55)" style-focus="outline:2px solid #2bb5e6;outline-offset:3px">{{ t.learn }} →</a>
+        <a href="#joinB" style="display:inline-flex;align-items:center;min-height:52px;padding:0 28px;border-radius:4px;border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:700;text-decoration:none" style-hover="border-color:#f0408a" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.join }}</a>
+      </div>
+    </div>
+    <div style="position:relative;justify-self:center;width:min(100%,460px)">
+      <div style="position:absolute;inset:-1px;border-radius:10px;background:linear-gradient(140deg,#f0408a,#2bb5e6 50%,#f7b52a);filter:blur(22px);opacity:.55"></div>
+      <img src="assets/poster-15th.png" alt="BHOS Family Party — 15th Anniversary poster" style="position:relative;display:block;width:100%;border-radius:10px;transform:rotate(2deg)">
+      <div style="position:absolute;left:-14px;bottom:28px;transform:rotate(-4deg);background:#f7b52a;color:#1a0b24;font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:15px;letter-spacing:.06em;padding:10px 14px;text-transform:uppercase">{{ t.stamp }}</div>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(56px,7cqw,104px) clamp(18px,4cqw,64px) 0;border-top:1px solid rgba(255,255,255,.1)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4cqw,64px)">
+      <div style="font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:#7fd3f5">{{ t.introKicker }}</div>
+      <p style="grid-column:span 2;margin:0;font-family:Archivo,sans-serif;font-weight:500;font-size:clamp(22px,2.6cqw,36px);line-height:1.3;text-wrap:pretty;max-width:900px">{{ t.introBody }}</p>
+    </div>
+    <div style="margin-top:clamp(40px,5cqw,72px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr))">
+      <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
+        <div style="padding:18px clamp(10px,2cqw,28px) 0 {{ s.pl }};border-left:{{ s.border }};border-top:2px solid {{ s.c }}">
+          <div style="font-family:Archivo,sans-serif;font-stretch:112%;font-weight:900;font-size:clamp(25px,6cqw,84px);line-height:1">{{ s.n }}</div>
+          <div style="margin-top:8px;font-size:clamp(11px,1.2cqw,14px);font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72)">{{ s.l }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(64px,8cqw,120px) clamp(18px,4cqw,64px) 0">
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.18)">
+      <h2 style="margin:0;font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(30px,4.4cqw,60px);line-height:1;text-transform:uppercase">{{ t.upcoming }}</h2>
+      <a href="#" style="font-weight:700;color:#fff;text-decoration:none;font-size:14px;letter-spacing:.08em;text-transform:uppercase" style-hover="color:#7fd3f5" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.allEvents }} →</a>
+    </div>
+    <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+      <a href="#" style="display:grid;grid-template-columns:clamp(64px,9cqw,120px) minmax(0,1fr) auto;gap:clamp(14px,3cqw,40px);align-items:center;padding:clamp(18px,2.4cqw,28px) 0;border-bottom:1px solid rgba(255,255,255,.18);color:#fff;text-decoration:none;transition:background .25s" style-hover="background:linear-gradient(90deg,rgba(138,59,196,.22),transparent 70%)" style-focus="outline:2px solid #fff;outline-offset:-2px">
+        <div style="line-height:1"><div style="font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(34px,4.4cqw,58px)">{{ e.day }}</div><div style="margin-top:6px;font-size:12px;font-weight:700;letter-spacing:.2em;color:#f7c75a">{{ e.mon }}</div></div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px clamp(16px,4cqw,56px);min-width:0">
+          <div style="flex:1 1 260px;min-width:0">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#ff7fb7">{{ e.tag }}</div>
+            <div style="margin-top:6px;font-family:Archivo,sans-serif;font-stretch:112%;font-weight:800;font-size:clamp(20px,2.2cqw,28px);line-height:1.1">{{ e.title }}</div>
+            <div style="margin-top:4px;font-size:15px;color:rgba(255,255,255,.72)">{{ e.sub }}</div>
+          </div>
+          <div style="display:flex;align-items:stretch;gap:12px;font-size:14px;font-weight:600;color:rgba(255,255,255,.88)"><span>{{ e.place }}</span><span style="width:1px;background:#f0408a"></span><span>{{ e.time }}</span></div>
+        </div>
+        <span aria-hidden="true" style="width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;font-size:18px">→</span>
+      </a>
+    </sc-for>
+  </section>
+
+  <section id="joinB" data-reveal="" style="margin-top:clamp(64px,8cqw,120px);background:#5a1f86;position:relative;overflow:hidden">
+    <div aria-hidden="true" style="position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#f0408a,#2bb5e6,#f7b52a)"></div>
+    <div style="padding:clamp(48px,6cqw,96px) clamp(18px,4cqw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:28px;align-items:end">
+      <h2 style="margin:0;font-family:Archivo,sans-serif;font-stretch:125%;font-weight:900;font-size:clamp(44px,8cqw,118px);line-height:.88;text-transform:uppercase;text-shadow:0 0 36px rgba(255,255,255,.25)">{{ t.join }}<span style="display:block;font-family:Sacramento,cursive;font-stretch:100%;font-weight:400;text-transform:none;font-size:.62em;line-height:1.1;color:#ffd27a;margin-left:.6em">{{ t.joinScript2 }}</span></h2>
+      <div>
+        <p style="margin:0;font-size:18px;line-height:1.6;max-width:460px">{{ t.joinBody }}</p>
+        <a href="#" style="margin-top:22px;display:inline-flex;align-items:center;min-height:54px;padding:0 30px;border-radius:4px;background:#fff;color:#1a0b24;font-weight:700;text-decoration:none" style-hover="box-shadow:0 0 30px rgba(255,255,255,.45)" style-focus="outline:2px solid #f7b52a;outline-offset:3px">{{ t.apply }} →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:40px clamp(18px,4cqw,64px) 28px;background:#0b0511">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:24px">
+        <div style="display:flex;align-items:center;gap:10px"><img src="assets/tgt-mark.png" alt="" style="height:36px"><span style="font-family:Nunito,sans-serif;font-weight:900;font-size:18px">BANM TGT</span></div>
+        <span style="width:1px;height:34px;background:rgba(255,255,255,.2)"></span>
+        <div style="display:flex;align-items:center;gap:10px"><img src="assets/bhos-crest.png" alt="" style="height:34px;border-radius:4px"><div style="font-size:12px;font-weight:700;line-height:1.35;letter-spacing:.04em;color:rgba(255,255,255,.8)">BAKI ALİ NEFT MƏKTƏBİ<br>BAKU HIGHER OIL SCHOOL</div></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px 28px;font-size:14px;font-weight:600;align-items:center">
+        <sc-for list="{{ t.nav }}" as="n"><a href="#" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff">{{ n }}</a></sc-for>
+      </div>
+    </div>
+    <div style="margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13px;color:rgba(255,255,255,.65)">
+      <span>© 2026 BANM TGT · {{ t.orgFull }}</span>
+      <div style="display:flex;gap:20px;font-weight:600"><a href="https://instagram.com/banm_tgt" style="color:#fff;text-decoration:none">Instagram @banm_tgt</a><a href="#" style="color:rgba(255,255,255,.8);text-decoration:none">Telegram</a><a href="#" style="color:rgba(255,255,255,.8);text-decoration:none">LinkedIn</a></div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const T = {
+  az: { nav: ['Haqqımızda','Tədbirlər','Komanda','Qalereya','Xəbərlər','Əlaqə'], menu: 'MENYU', join: 'Üzv ol', apply: 'Müraciət et', learn: 'Ətraflı', eyebrow: 'Növbəti tədbir', anniv15: '15-ci il dönümü', stamp: '15 il', lDate: 'Tarix', lTime: 'Saat', lPlace: 'Məkan', date: '24 Noyabr', countLabel: 'Tədbirə qalan vaxt', units: ['Gün','Saat','Dəq','San'],
+    introKicker: 'Biz kimik', introBody: 'Tələbə Gənclər Təşkilatı Bakı Ali Neft Məktəbində tələbə təşəbbüslərini birləşdirir: tədbirlər, könüllülük layihələri, intellektual yarışlar və tələbə həyatını rəngarəng edən hər şey.',
+    stats: ['Üzv','Tədbir','İl'], upcoming: 'Qarşıdakı tədbirlər', allEvents: 'Bütün tədbirlər', joinScript2: 'və birlikdə quraq', joinBody: 'İdeyaların var? Tədbir təşkil etmək istəyirsən? Müraciət et, növbəti tədbiri birlikdə quraq.', orgFull: 'Bakı Ali Neft Məktəbi Tələbə Gənclər Təşkilatı' },
+  en: { nav: ['About','Events','Team','Gallery','News','Contact'], menu: 'MENU', join: 'Join us', apply: 'Apply now', learn: 'Learn more', eyebrow: 'Next event', anniv15: '15th Anniversary', stamp: '15 years', lDate: 'Date', lTime: 'Time', lPlace: 'Venue', date: '24 November', countLabel: 'Time until the event', units: ['Days','Hrs','Min','Sec'],
+    introKicker: 'Who we are', introBody: 'The Student Youth Organization brings student initiatives at Baku Higher Oil School together: events, volunteering projects, intellectual competitions and everything that makes student life vivid.',
+    stats: ['Members','Events held','Years active'], upcoming: 'Upcoming events', allEvents: 'All events', joinScript2: 'and build with us', joinBody: 'Have ideas? Want to organise events? Apply and let’s build the next one together.', orgFull: 'BHOS Student Youth Organization' }
+};
+const EVENTS = [
+  { day: '24', mon: { az: 'NOY', en: 'NOV' }, title: { az: 'BHOS Family Party', en: 'BHOS Family Party' }, sub: { az: '15-ci il dönümü', en: '15th Anniversary' }, place: { az: 'Khan by Hollywood', en: 'Khan by Hollywood' }, time: '18:00', tag: { az: 'Flaqman tədbir', en: 'Flagship' } },
+  { day: '05', mon: { az: 'DEK', en: 'DEC' }, title: { az: 'Brain Ring', en: 'Brain Ring' }, sub: { az: 'Fakültələrarası intellektual oyun', en: 'Inter-faculty quiz tournament' }, place: { az: 'BANM, Akt zalı', en: 'BHOS Assembly Hall' }, time: '16:00', tag: { az: 'Yarış', en: 'Competition' } },
+  { day: '14', mon: { az: 'DEK', en: 'DEC' }, title: { az: 'Qış xeyriyyə aksiyası', en: 'Winter charity drive' }, sub: { az: 'Könüllülük layihəsi', en: 'Volunteering project' }, place: { az: 'BANM kampusu', en: 'BHOS campus' }, time: '11:00', tag: { az: 'Könüllülük', en: 'Volunteering' } }
+];
+const TARGET = Date.parse('2026-11-24T18:00:00+04:00');
+class Component extends DCLogic {
+  state = { lang: null, m: false, now: Date.now(), menu: false };
+  root = el => { if (!el || this.ro) return; const chk = w => { const m = w < 760; if (m !== this.state.m) this.setState({ m }); }; chk(el.getBoundingClientRect().width); this.ro = new ResizeObserver(([e]) => chk(e.contentRect.width)); this.ro.observe(el); this.rootEl = el; };
+  componentDidMount() {
+    this.iv = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    const el = this.rootEl; if (!el) return;
+    if (this.props.reveal === false) return;
+    this.io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.style.opacity = 1; x.target.style.transform = 'none'; this.io.unobserve(x.target); } }), { threshold: 0.12 });
+    el.querySelectorAll('[data-reveal]').forEach(n => { n.style.transition = 'opacity .8s ease, transform .8s ease'; n.style.opacity = 0; n.style.transform = 'translateY(28px)'; this.io.observe(n); });
+  }
+  componentWillUnmount() { clearInterval(this.iv); this.ro && this.ro.disconnect(); this.io && this.io.disconnect(); }
+  renderVals() {
+    const lang = this.state.lang ?? this.props.lang ?? 'az'; const t = T[lang];
+    const s = Math.max(0, Math.floor((TARGET - this.state.now) / 1000));
+    const v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60].map(n => String(n).padStart(2, '0'));
+    const az = lang === 'az';
+    return {
+      root: this.root, t, isAz: az, isEn: !az,
+      azOp: az ? 1 : .6, enOp: az ? .6 : 1, azLine: az ? '#f0408a' : 'transparent', enLine: az ? 'transparent' : '#f0408a',
+      setAz: () => this.setState({ lang: 'az' }), setEn: () => this.setState({ lang: 'en' }),
+      m: this.state.m, d: !this.state.m, menuOpen: this.state.m && this.state.menu, toggleMenu: () => this.setState(p => ({ menu: !p.menu })),
+      cd: v.map((x, i) => ({ v: x, l: t.units[i] })),
+      stats: [['500+', '#f0408a'], ['120+', '#2bb5e6'], ['15', '#f7b52a']].map(([n, c], i) => ({ n, c, l: t.stats[i], pl: i ? 'clamp(10px,2cqw,28px)' : '0', border: i ? '1px solid rgba(255,255,255,.12)' : '0' })),
+      events: EVENTS.map(e => ({ day: e.day, mon: e.mon[lang], title: e.title[lang], sub: e.sub[lang], place: e.place[lang], time: e.time, tag: e.tag[lang] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

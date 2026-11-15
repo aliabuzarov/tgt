@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Yellowtail&family=Manrope:wght@400;500;600;700;800&family=Nunito:wght@900&display=swap">
+<style>body{margin:0;background:#0d0613}a{color:#f39ac0}a:hover{color:#fff}*{box-sizing:border-box}</style>
+</helmet>
+<div ref="{{ root }}" style="container-type:inline-size;background:#0d0613;color:#fff;font-family:Manrope,system-ui,sans-serif;overflow:hidden;position:relative">
+  <dc-import name="Site Header" lang="{{ lang }}" on-lang="{{ setLang }}" active="team" hint-size="100%,77px"></dc-import>
+
+  <section style="position:relative;text-align:center;padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) clamp(40px,5cqw,72px)">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(130,40,190,.5),rgba(13,6,19,0) 60%),repeating-radial-gradient(circle at 50% 0%,rgba(255,255,255,.04) 0 1px,transparent 1px 9px);pointer-events:none"></div>
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#f7c75a;white-space:nowrap"><span style="width:36px;height:1px;background:#f7c75a"></span>{{ t.eyebrow }}<span style="width:36px;height:1px;background:#f7c75a"></span></div>
+      <h1 style="margin:22px 0 0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(36px,6.4cqw,92px);line-height:1;text-wrap:balance;text-shadow:0 0 22px rgba(200,110,255,.5),0 0 60px rgba(150,50,230,.35)">{{ t.title }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#2bb5e6;text-shadow:0 0 12px rgba(43,181,230,.9),0 0 32px rgba(43,181,230,.5)">{{ t.script }}</span></h1>
+      <p style="margin:22px 0 0;max-width:600px;font-size:clamp(16px,1.6cqw,19px);line-height:1.6;color:rgba(255,255,255,.84)">{{ t.lead }}</p>
+    </div>
+  </section>
+
+  <section style="padding:clamp(24px,4cqw,56px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto">
+    <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(24px,2.8cqw,36px)">{{ t.lead2 }}</h2>
+    <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px">
+      <sc-for list="{{ leaders }}" as="p" hint-placeholder-count="4">
+        <article style="border-radius:22px;overflow:hidden;background:#160b20;border:1px solid rgba(214,120,255,.2);transition:box-shadow .3s,transform .3s" style-hover="box-shadow:0 0 36px rgba(170,70,240,.35);transform:translateY(-4px)">
+          <div style="position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(135deg,#1d1028 0 10px,#22132f 10px 20px);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,monospace;font-size:12px;color:rgba(255,255,255,.6)">portrait
+            <div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:{{ p.c }};box-shadow:0 0 14px {{ p.c }}"></div>
+          </div>
+          <div style="padding:18px 20px 22px">
+            <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:18px">{{ p.name }}</h3>
+            <div style="margin-top:6px;font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:{{ p.c }}">{{ p.role }}</div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto">
+    <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(24px,2.8cqw,36px)">{{ t.deps }}</h2>
+    <div style="margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));border-top:1px solid rgba(255,255,255,.14)">
+      <sc-for list="{{ deps }}" as="d" hint-placeholder-count="6">
+        <div style="padding:26px 24px 28px 0;border-bottom:1px solid rgba(255,255,255,.14);display:flex;gap:18px">
+          <div style="font-family:Unbounded,sans-serif;font-weight:800;font-size:15px;color:{{ d.c }};min-width:28px">{{ d.n }}</div>
+          <div style="min-width:0">
+            <h3 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:20px">{{ d.name }}</h3>
+            <p style="margin:8px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.78)">{{ d.desc }}</p>
+            <div style="margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:13px;font-weight:700;white-space:nowrap">
+              <span style="flex:none;width:32px;height:32px;border-radius:50%;background:repeating-linear-gradient(135deg,#24143a 0 4px,#2c1846 4px 8px);border:1px solid rgba(255,255,255,.2)"></span>
+              <span style="color:rgba(255,255,255,.7)">{{ t.head }}</span><span>{{ d.head }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px);max-width:1240px;margin:0 auto">
+    <div style="border-radius:28px;padding:2px;background:linear-gradient(110deg,#f0408a,#2bb5e6 50%,#f7b52a)">
+      <div style="border-radius:26px;background:radial-gradient(circle at 85% 20%,rgba(150,50,230,.45),transparent 55%),#140a1d;padding:clamp(28px,4cqw,52px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+        <div style="max-width:620px">
+          <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(26px,3.4cqw,44px);line-height:1.05;text-shadow:0 0 26px rgba(190,90,255,.5)">{{ t.ctaTitle }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#f7c75a">{{ t.ctaScript }}</span></h2>
+          <p style="margin:12px 0 0;font-size:17px;line-height:1.6;color:rgba(255,255,255,.82)">{{ t.ctaBody }}</p>
+        </div>
+        <a href="Join.dc.html" style="display:inline-flex;align-items:center;min-height:54px;padding:0 32px;border-radius:999px;background:#fff;color:#1a0b24;font-weight:800;text-decoration:none;box-shadow:0 0 30px rgba(214,90,255,.5)" style-hover="box-shadow:0 0 44px rgba(240,64,138,.75)" style-focus="outline:2px solid #f0408a;outline-offset:3px">{{ t.join }}</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" lang="{{ lang }}" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;}}">
+const C = ['#ff7fb7', '#2bb5e6', '#f7c75a', '#c58cff'];
+const T = {
+  az: { eyebrow: 'Komanda', title: 'Hər tədbirin arxasındakı', script: 'insanlar', lead: 'Təşkilatı tələbələrdən ibarət rəhbərlik və altı departament idarə edir.', lead2: 'Rəhbərlik', deps: 'Departamentlər', head: 'Rəhbər:', ctaTitle: 'Yerin', ctaScript: 'burada', ctaBody: 'Hansı departamentdə özünü göstərmək istədiyini müraciətdə qeyd et.', join: 'Üzv ol' },
+  en: { eyebrow: 'Team', title: 'The people behind every', script: 'event', lead: 'The organization is run by a student leadership team and six departments.', lead2: 'Leadership', deps: 'Departments', head: 'Lead:', ctaTitle: 'There’s a place', ctaScript: 'for you', ctaBody: 'Tell us which department you’d like to join in your application.', join: 'Join us' }
+};
+const getLang = () => { try { return localStorage.getItem('tgt-lang'); } catch (e) { return null; } };
+class Component extends DCLogic {
+  state = { lang: getLang(), c: null };
+  setLang = l => { try { localStorage.setItem('tgt-lang', l); } catch (e) {} this.setState({ lang: l }); };
+  componentDidMount() { import(new URL('content.js', document.baseURI).href).then(c => this.setState({ c })); }
+  renderVals() {
+    const lang = this.state.lang || this.props.lang || 'az', t = T[lang], c = this.state.c;
+    return { t, lang, setLang: this.setLang,
+      leaders: c ? c.team.leaders.map((p, i) => ({ name: p.name, role: p.role[lang], c: C[i % 4] })) : [],
+      deps: c ? c.team.departments.map((d, i) => ({ n: String(i + 1).padStart(2, '0'), name: d.name[lang], desc: d.desc[lang], head: d.head, c: C[i % 4] })) : [] };
+  }
+}
+</script>
+</body>
+</html>

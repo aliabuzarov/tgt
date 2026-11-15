@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Yellowtail&family=Manrope:wght@400;500;600;700;800&family=Nunito:wght@900&display=swap">
+<style>body{margin:0;background:#0d0613}a{color:#f39ac0}a:hover{color:#fff}*{box-sizing:border-box}</style>
+</helmet>
+<div ref="{{ root }}" style="container-type:inline-size;background:#0d0613;color:#fff;font-family:Manrope,system-ui,sans-serif;overflow:hidden;position:relative">
+  <dc-import name="Site Header" lang="{{ lang }}" on-lang="{{ setLang }}" active="about" hint-size="100%,77px"></dc-import>
+
+  <section style="position:relative;text-align:center;padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) clamp(48px,6cqw,88px)">
+    <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(130,40,190,.5),rgba(13,6,19,0) 60%),repeating-radial-gradient(circle at 50% 0%,rgba(255,255,255,.04) 0 1px,transparent 1px 9px);pointer-events:none"></div>
+    <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:#f7c75a;white-space:nowrap"><span style="width:36px;height:1px;background:#f7c75a"></span>{{ t.eyebrow }}<span style="width:36px;height:1px;background:#f7c75a"></span></div>
+      <h1 style="margin:22px 0 0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(36px,6.4cqw,92px);line-height:1;max-width:1000px;text-wrap:balance;text-shadow:0 0 22px rgba(200,110,255,.5),0 0 60px rgba(150,50,230,.35)">{{ t.title }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#ff5fa8;text-shadow:0 0 10px rgba(255,95,168,.9),0 0 32px rgba(240,64,138,.6)">{{ t.script }}</span></h1>
+      <p style="margin:24px 0 0;max-width:640px;font-size:clamp(16px,1.6cqw,19px);line-height:1.6;color:rgba(255,255,255,.84);text-wrap:pretty">{{ t.lead }}</p>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(40px,6cqw,88px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(20px,4cqw,64px);border-top:1px solid rgba(255,255,255,.1)">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:#7fd3f5">{{ t.missionK }}</div>
+    <p style="grid-column:span 2;margin:0;font-family:Unbounded,sans-serif;font-weight:500;font-size:clamp(20px,2.4cqw,32px);line-height:1.35;text-wrap:pretty">{{ t.mission }}</p>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto">
+    <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(26px,3.2cqw,42px)">{{ t.doTitle }}</h2>
+    <div style="margin-top:28px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px">
+      <sc-for list="{{ does }}" as="x" hint-placeholder-count="4">
+        <div style="padding:26px 24px 28px;border-radius:22px;background:#160b20;border:1px solid rgba(214,120,255,.2);border-top:3px solid {{ x.c }};transition:box-shadow .3s" style-hover="box-shadow:0 0 32px rgba(170,70,240,.3)">
+          <div style="font-family:Unbounded,sans-serif;font-weight:800;font-size:15px;color:{{ x.c }}">{{ x.n }}</div>
+          <h3 style="margin:18px 0 0;font-family:Unbounded,sans-serif;font-weight:700;font-size:20px">{{ x.h }}</h3>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.78)">{{ x.p }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px) 0;max-width:1240px;margin:0 auto">
+    <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:clamp(26px,3.2cqw,42px)">{{ t.histTitle }}</h2>
+    <div style="margin-top:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0">
+      <sc-for list="{{ hist }}" as="h" hint-placeholder-count="4">
+        <div style="position:relative;padding:28px 24px 24px 0;border-top:1px solid rgba(255,255,255,.18)">
+          <span style="position:absolute;top:-7px;left:0;width:13px;height:13px;border-radius:50%;background:{{ h.c }};box-shadow:0 0 12px {{ h.c }}"></span>
+          <div style="font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(28px,3cqw,40px);text-shadow:0 0 20px rgba(190,90,255,.45)">{{ h.y }}</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.55;color:rgba(255,255,255,.82);max-width:260px">{{ h.p }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-reveal="" style="padding:clamp(56px,8cqw,112px) clamp(18px,4cqw,56px);max-width:1240px;margin:0 auto">
+    <div style="border-radius:28px;padding:2px;background:linear-gradient(110deg,#f0408a,#2bb5e6 50%,#f7b52a)">
+      <div style="border-radius:26px;background:radial-gradient(circle at 85% 20%,rgba(150,50,230,.45),transparent 55%),#140a1d;padding:clamp(28px,4cqw,52px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+        <h2 style="margin:0;font-family:Unbounded,sans-serif;font-weight:800;font-size:clamp(26px,3.4cqw,44px);line-height:1.05;text-shadow:0 0 26px rgba(190,90,255,.5)">{{ t.ctaTitle }} <span style="font-family:Yellowtail,cursive;font-weight:400;color:#f7c75a">{{ t.ctaScript }}</span></h2>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <a href="Join.dc.html" style="display:inline-flex;align-items:center;min-height:52px;padding:0 30px;border-radius:999px;background:#fff;color:#1a0b24;font-weight:800;text-decoration:none;box-shadow:0 0 30px rgba(214,90,255,.5)" style-hover="box-shadow:0 0 44px rgba(240,64,138,.75)" style-focus="outline:2px solid #f0408a;outline-offset:3px">{{ t.join }}</a>
+          <a href="Team.dc.html" style="display:inline-flex;align-items:center;min-height:52px;padding:0 30px;border-radius:999px;border:1px solid rgba(255,255,255,.45);color:#fff;font-weight:700;text-decoration:none" style-hover="border-color:#fff" style-focus="outline:2px solid #fff;outline-offset:3px">{{ t.team }}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Site Footer" lang="{{ lang }}" hint-size="100%,260px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;},&quot;reveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const C = ['#ff7fb7', '#2bb5e6', '#f7c75a', '#c58cff'];
+const T = {
+  az: { eyebrow: 'Haqqımızda', title: 'Tələbə həyatının', script: 'mərkəzi', lead: 'Bakı Ali Neft Məktəbi Tələbə Gənclər Təşkilatı tələbələr tərəfindən, tələbələr üçün idarə olunan təşkilatdır.',
+    missionK: 'Missiyamız', mission: 'Hər BANM tələbəsinə öz ideyasını həyata keçirmək, yeni insanlarla tanış olmaq və universitet həyatının fəal iştirakçısı olmaq imkanı yaratmaq.',
+    doTitle: 'Nə edirik', histTitle: 'Tariximiz', ctaTitle: 'Növbəti səhifəni', ctaScript: 'birlikdə yazaq', join: 'Üzv ol', team: 'Komandanı tanı',
+    does: [['Tədbirlər', 'BHOS Family Party, tematik gecələr, konsertlər və universitet bayramları.'], ['Könüllülük', 'Xeyriyyə aksiyaları, sosial layihələr və icma ilə iş.'], ['İntellektual yarışlar', 'Brain Ring, debatlar və fakültələrarası bilik yarışları.'], ['İnkişaf', 'Təlimlər, seminarlar və karyera görüşləri.']],
+    hist: [['2011', 'Bakı Ali Neft Məktəbi yaradılır, ilk tələbə təşəbbüsləri başlayır.'], ['2025', '14-cü il dönümü: BHOS Family Party Mezze Baku-da.'], ['2026', '15-ci il dönümü: BHOS Family Party Khan by Hollywood-da.'], ['500+', 'Bu gün təşkilatın fəal üzvlərinin sayı.']] },
+  en: { eyebrow: 'About us', title: 'The heart of student', script: 'life', lead: 'The BHOS Student Youth Organization is run by students, for students of Baku Higher Oil School.',
+    missionK: 'Our mission', mission: 'To give every BHOS student the chance to bring their ideas to life, meet new people and take an active part in university life.',
+    doTitle: 'What we do', histTitle: 'Our history', ctaTitle: 'Let’s write the next chapter', ctaScript: 'together', join: 'Join us', team: 'Meet the team',
+    does: [['Events', 'BHOS Family Party, themed nights, concerts and university celebrations.'], ['Volunteering', 'Charity drives, social projects and community work.'], ['Intellectual contests', 'Brain Ring, debates and inter-faculty knowledge competitions.'], ['Growth', 'Trainings, seminars and career meetups.']],
+    hist: [['2011', 'Baku Higher Oil School is founded and the first student initiatives begin.'], ['2025', '14th Anniversary: BHOS Family Party at Mezze Baku.'], ['2026', '15th Anniversary: BHOS Family Party at Khan by Hollywood.'], ['500+', 'Active members of the organization today.']] }
+};
+const getLang = () => { try { return localStorage.getItem('tgt-lang'); } catch (e) { return null; } };
+class Component extends DCLogic {
+  state = { lang: getLang() };
+  root = React.createRef();
+  setLang = l => { try { localStorage.setItem('tgt-lang', l); } catch (e) {} this.setState({ lang: l }); };
+  componentDidMount() {
+    const el = this.root.current; if (!el || this.props.reveal === false) return;
+    this.io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.style.opacity = 1; x.target.style.transform = 'none'; this.io.unobserve(x.target); } }), { threshold: 0.1 });
+    el.querySelectorAll('[data-reveal]').forEach(n => { n.style.transition = 'opacity .8s ease, transform .8s ease'; n.style.opacity = 0; n.style.transform = 'translateY(28px)'; this.io.observe(n); });
+  }
+  componentWillUnmount() { this.io && this.io.disconnect(); }
+  renderVals() {
+    const lang = this.state.lang || this.props.lang || 'az', t = T[lang];
+    return { root: this.root, t, lang, setLang: this.setLang,
+      does: t.does.map(([h, p], i) => ({ n: '0' + (i + 1), h, p, c: C[i] })),
+      hist: t.hist.map(([y, p], i) => ({ y, p, c: C[i] })) };
+  }
+}
+</script>
+</body>
+</html>

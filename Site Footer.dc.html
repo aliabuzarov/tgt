@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<footer style="border-top:1px solid rgba(255,255,255,.1);padding:40px clamp(18px,4cqw,56px) 28px;background:#0a0410;color:#fff;font-family:Manrope,system-ui,sans-serif">
+  <div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <a href="Home.dc.html" style="display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none"><img src="assets/tgt-mark.png" alt="" style="height:36px"><span style="font-family:Nunito,sans-serif;font-weight:900;font-size:18px">BANM TGT</span></a>
+      <div style="display:flex;align-items:center;gap:10px"><img src="assets/bhos-crest.png" alt="" style="height:34px;border-radius:4px"><div style="font-size:12px;font-weight:700;line-height:1.35;letter-spacing:.04em;color:rgba(255,255,255,.8)">BAKI ALİ NEFT MƏKTƏBİ<br>BAKU HIGHER OIL SCHOOL</div></div>
+    </div>
+    <nav style="display:grid;grid-template-columns:repeat(2,auto);gap:10px 40px;font-size:14px;font-weight:600">
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="6"><a href="{{ n.href }}" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff" style-focus="outline:2px solid #fff;outline-offset:3px">{{ n.label }}</a></sc-for>
+    </nav>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;font-weight:600">
+      <a href="https://instagram.com/banm_tgt" style="color:#fff;text-decoration:none" style-hover="color:#ff7fb7">Instagram · @banm_tgt</a>
+      <a href="#" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff">Telegram</a>
+      <a href="#" style="color:rgba(255,255,255,.8);text-decoration:none" style-hover="color:#fff">LinkedIn</a>
+    </div>
+  </div>
+  <div style="max-width:1240px;margin:32px auto 0;height:1px;background:linear-gradient(90deg,#f0408a,#2bb5e6,#f7b52a);opacity:.6"></div>
+  <div style="max-width:1240px;margin:16px auto 0;font-size:12px;color:rgba(255,255,255,.6)">© 2026 BANM TGT · {{ org }}</div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;lang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;az&quot;,&quot;en&quot;],&quot;default&quot;:&quot;az&quot;,&quot;tsType&quot;:&quot;'az'|'en'&quot;},&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:300}}">
+const NAV = [
+  ['About.dc.html', 'Haqqımızda', 'About'], ['Events.dc.html', 'Tədbirlər', 'Events'], ['Team.dc.html', 'Komanda', 'Team'],
+  ['Gallery.dc.html', 'Qalereya', 'Gallery'], ['Gallery.dc.html#news', 'Xəbərlər', 'News'], ['Join.dc.html', 'Əlaqə', 'Contact']
+];
+class Component extends DCLogic {
+  renderVals() {
+    const az = (this.props.lang || 'az') === 'az';
+    return { nav: NAV.map(([href, a, e]) => ({ href, label: az ? a : e })), org: az ? 'Bakı Ali Neft Məktəbi Tələbə Gənclər Təşkilatı' : 'BHOS Student Youth Organization' };
+  }
+}
+</script>
+</body>
+</html>
